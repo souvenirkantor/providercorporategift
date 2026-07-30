@@ -24,6 +24,7 @@
     initLightbox();
     initTocToggle();
     initLoadMoreBlog();
+    initFaqReveal();
   });
 
   /* 1. Navbar background/shadow state on scroll */
@@ -193,19 +194,23 @@
 
   }
 
-  const faqItems = document.querySelectorAll(".faq-left, .faq-right");
+  /* 9b. FAQ reveal (dipindah ke dalam DOMContentLoaded, pakai IntersectionObserver
+     yang sama efisiennya dgn initScrollReveal, tidak lagi ada scroll listener manual) */
+  function initFaqReveal() {
+    const faqItems = document.querySelectorAll(".faq-left, .faq-right");
+    if (!faqItems.length) return;
 
-  const faqObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("show");
-      }
-    });
-  }, {
-    threshold: 0.2
-  });
+    const faqObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+          faqObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
 
-  faqItems.forEach(item => faqObserver.observe(item));
+    faqItems.forEach(item => faqObserver.observe(item));
+  }
 
   function initProductFilter() {
 
@@ -274,34 +279,6 @@
     });
 
   }
-
-  /* ==========================
-   Scroll Reveal
-========================== */
-
-  const reveals = document.querySelectorAll(".reveal");
-
-  function revealOnScroll() {
-
-    reveals.forEach(item => {
-
-      const windowHeight = window.innerHeight;
-
-      const elementTop = item.getBoundingClientRect().top;
-
-      if (elementTop < windowHeight - 80) {
-
-        item.classList.add("active");
-
-      }
-
-    });
-
-  }
-
-  window.addEventListener("scroll", revealOnScroll);
-
-  window.addEventListener("load", revealOnScroll);
 
   /* Premium About Image Hover */
   function initAboutImageHover() {
