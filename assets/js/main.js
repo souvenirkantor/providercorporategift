@@ -168,17 +168,46 @@
     `
     );
 
-    if (!cards.length) return;
+    if (cards.length) {
+      const observer = new IntersectionObserver(function (entries) {
 
-    const observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+
+          if (entry.isIntersecting) {
+
+            entry.target.classList.add("show");
+
+            observer.unobserve(entry.target);
+
+          }
+
+        });
+
+      }, {
+        threshold: 0.05
+      });
+
+      cards.forEach(function (card) {
+        observer.observe(card);
+      });
+    }
+
+    /* Plain .reveal elements (used on blog.html & gallery.html cards/headers)
+       use the .active class per custom.css, not .show — handle separately so
+       this content is not left permanently hidden (opacity: 0). */
+    const plainReveal = document.querySelectorAll(".reveal");
+
+    if (!plainReveal.length) return;
+
+    const plainObserver = new IntersectionObserver(function (entries) {
 
       entries.forEach(function (entry) {
 
         if (entry.isIntersecting) {
 
-          entry.target.classList.add("show");
+          entry.target.classList.add("active");
 
-          observer.unobserve(entry.target);
+          plainObserver.unobserve(entry.target);
 
         }
 
@@ -188,8 +217,8 @@
       threshold: 0.05
     });
 
-    cards.forEach(function (card) {
-      observer.observe(card);
+    plainReveal.forEach(function (el) {
+      plainObserver.observe(el);
     });
 
   }
