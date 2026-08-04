@@ -1366,6 +1366,26 @@ select:focus-visible {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.brand-title {
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: .2px;
+}
+
+.brand-subtitle {
+  color: #94A3B8;
+  font-size: .82rem;
+  margin-top: 4px;
+  letter-spacing: .4px;
+}
+
 /* -----------------------------
    13. Floating WhatsApp Button
 ------------------------------ */
