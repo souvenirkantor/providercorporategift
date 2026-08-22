@@ -25,6 +25,7 @@
     initTocToggle();
     initLoadMoreBlog();
     initFaqReveal();
+    initHeroProductSlider();
   });
 
   /* 1. Navbar background/shadow state on scroll */
@@ -495,6 +496,85 @@
 
     });
 
+  }
+
+  /* 17. Hero Product Auto Slider */
+  function initHeroProductSlider() {
+    var slider = document.getElementById("heroProductSlider");
+    if (!slider) return;
+
+    var slides = slider.querySelectorAll(".hero-slide");
+    var container = slider.closest(".hero-visual-frame") || slider.parentElement;
+    var indicators = container.querySelectorAll(".hero-indicator");
+    if (slides.length <= 1) return;
+
+    var currentIndex = 0;
+    var timer = null;
+    var intervalTime = 3500;
+
+    function goToSlide(index) {
+      slides[currentIndex].classList.remove("active");
+      if (indicators[currentIndex]) {
+        indicators[currentIndex].classList.remove("active");
+      }
+
+      currentIndex = (index + slides.length) % slides.length;
+
+      slides[currentIndex].classList.add("active");
+      if (indicators[currentIndex]) {
+        indicators[currentIndex].classList.add("active");
+      }
+    }
+
+    function nextSlide() {
+      goToSlide(currentIndex + 1);
+    }
+
+    function startTimer() {
+      stopTimer();
+      timer = setInterval(nextSlide, intervalTime);
+    }
+
+    function stopTimer() {
+      if (timer) {
+        clearInterval(timer);
+        timer = null;
+      }
+    }
+
+    indicators.forEach(function (indicator, idx) {
+      indicator.addEventListener("click", function (e) {
+        e.preventDefault();
+        goToSlide(idx);
+        startTimer();
+      });
+    });
+
+    container.addEventListener("mouseenter", stopTimer);
+    container.addEventListener("mouseleave", startTimer);
+
+    var touchStartX = 0;
+    var touchEndX = 0;
+
+    container.addEventListener("touchstart", function (e) {
+      touchStartX = e.changedTouches[0].screenX;
+      stopTimer();
+    }, { passive: true });
+
+    container.addEventListener("touchend", function (e) {
+      touchEndX = e.changedTouches[0].screenX;
+      var diff = touchStartX - touchEndX;
+      if (Math.abs(diff) > 40) {
+        if (diff > 0) {
+          goToSlide(currentIndex + 1);
+        } else {
+          goToSlide(currentIndex - 1);
+        }
+      }
+      startTimer();
+    }, { passive: true });
+
+    startTimer();
   }
 
 })();
