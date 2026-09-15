@@ -34,7 +34,7 @@
 
     <url>
         <loc>https://providercorporategift.web.id/blog.html</loc>
-        <lastmod>2026-09-14</lastmod>
+        <lastmod>2026-09-15</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -837,6 +837,20 @@
     <url>
         <loc>https://www.providercorporategift.web.id/seminar-kit-custom-logo-perusahaan.html</loc>
         <lastmod>2026-09-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <url>
+        <loc>https://www.providercorporategift.web.id/hampers-eksekutif-perusahaan.html</loc>
+        <lastmod>2026-09-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <url>
+        <loc>https://www.providercorporategift.web.id/plakat-penghargaan-custom-karyawan.html</loc>
+        <lastmod>2026-09-15</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
