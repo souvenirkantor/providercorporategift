@@ -3,7 +3,7 @@
     <!-- Homepage -->
     <url>
         <loc>https://providercorporategift.web.id/</loc>
-        <lastmod>2026-09-20</lastmod>
+        <lastmod>2026-09-22</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
@@ -32,7 +32,7 @@
 
     <url>
         <loc>https://providercorporategift.web.id/blog</loc>
-        <lastmod>2026-09-20</lastmod>
+        <lastmod>2026-09-22</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -893,6 +893,13 @@
     <url>
         <loc>https://providercorporategift.web.id/rekomendasi-corporate-gift-premium-perusahaan-semarang</loc>
         <lastmod>2026-09-20</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <url>
+        <loc>https://providercorporategift.web.id/paket-gift-set-kulit-eksekutif-custom-logo</loc>
+        <lastmod>2026-09-22</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
